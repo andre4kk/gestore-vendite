@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  gestore-account:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gestore_account_app
+    ports:
+      - "8080:3000"
+    environment:
+      - PORT=3000
+    volumes:
+      - account_db_data:/data
+    restart: unless-stopped
+
+volumes:
+  account_db_data:
+    driver: local
